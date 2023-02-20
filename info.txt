@@ -1,0 +1,9 @@
+npm init --yes
+
+npm i express
+
+npm i nodemon --save-dev
+
+npm install -g nodemon
+:--save-dev 옵션을 붙이면 로컬에서만 사용함
+<script src="https://kit.fontawesome.com/545bc41eee.js" crossorigin="anonymous"></script>

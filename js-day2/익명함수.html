@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>익명함수</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      //text/javascript -> module -> 구글 개발자센터에 입문하게 되면/쓰게 되면 중급자!!
+      const words = [
+        "spray",
+        "limit",
+        "elite",
+        "exuberant",
+        "destruction",
+        "present",
+      ];
+
+      const result = words.filter((word, index) => word.length > 6);
+
+      console.log(result);
+      document.write(typeof result);
+      document.write("<br />");
+      document.write(result[0]);
+      document.write("<br />");
+      document.write(result[1]);
+      document.write("<br />");
+      document.write(result[2]);
+      document.write("<br />");
+
+      /*배열 구조분해 할당 [] */
+      const [r1, r2, r3] = result;
+      document.write("<hr>");
+      document.write(r1, " ", r2, " ", r3);
+      /*  객체 구조분해 할당 {}*/
+      let student = {
+        name: "권양아",
+        age: 33,
+        address: "원주시 태장동",
+      };
+      document.write("<hr>");
+      const { name, age, address } = student;
+      document.write(`${name}${age}${address}`);
+
+      // Expected output: Array ["exuberant", "destruction", "present"]
+    </script>
+  </body>
+</html>

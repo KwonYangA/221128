@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      /*   
+    배열:Array
+    연관된 값들을 하나의 그룹으로 묶어서 나열한 구조
+    */
+      const fruits = ["🍕", "🍔", "🍟"];
+      /* for (let i = 0; i < fruits.length; i++) {
+        document.write(fruits[i]);
+      } */
+      fruits.forEach((element) => console.log(element));
+      fruits.forEach((element, index, fruits) => {
+        document.write(element, index, fruits);
+      });
+    </script>
+  </body>
+</html>

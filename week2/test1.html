@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <form id="f_test" method="post" action="">
+      <fieldset style="width:500px; height:200px">
+        <legend>회원 가입 정보</legend>
+        <table>
+          <tr>
+            <td>아이디</td>
+            <td>
+              <input type="text" size="35" name="userid" id ="userid" />
+              <input type="button" size="35" name="idCheck" id="idCheck" value="중복확인"/>
+            </td>
+          </tr>
+            <td>비밀번호</td>
+            <td>
+              <input type="password" size="35" name="userpw" />
+            </td>
+          </tr>
+          <tr>
+            <td>비밀번호확인</td>
+            <td>
+              <input type="password" size="35" name="name" />
+            </td>
+          </tr>
+          <tr>
+            <td>지역</td>
+            <td>
+            <input type="radio" id="loc" value="서울" />서울
+            <input type="radio" id="loc" value="부산" />부산
+            <input type="radio" id="loc" value="대구" />대구
+            </td>
+          </tr>
+        </table>
+        <div align=center>
+        <input type="reset" id="btn" value="초기화" />
+        <input type="submit" id="btnjoin" value="회원가입" />
+        </div>
+      </fieldset>
+    </form>
+
+    <script>
+        const input = document.querySelector("#userid")
+        const btn = document.querySelector("#idCheck")
+        const reg = /^[a-z][a-z0-9!@#]{6,12}$/;
+        
+        btn.addEventListener("click", ()=> {
+        if(!reg.test(input.value)){
+          input.style.backgroundColor = "red";
+        }else{
+          input.style.backgroundColor = "green";
+        }
+        })
+  
+        const btn_join =document.querySelector("#btnjoin")
+        const loc_rad = document.querySelectorAll("#loc")
+        btn_join.addEventListener("click", ()=>{
+        let locationSelected = false;
+        loc_rad.forEach((locSelect)=>{
+          console.log(loc_rad);
+          if(locSelect.checked){
+          locationSelected = true
+          alert("가입성공")
+          }
+        })
+        if(!locationSelected){
+          event.preventDefault()
+          alert("지역을 선택하세요")
+        }
+       })
+        
+    </script>
+
+  </body>
+</html>

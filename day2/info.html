@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- viewport가 있어야 모바일 디바이스가 모바일 페이지를 제대로 출력
+  하이브리앱 = 네이티브앱 + 웹앱
+  요소=태그=노드
+  1)인라인요소 - 크기없음, 자동줄바꿈없음 <br /><br>:(리액트안됨)
+  2)블록요소 - 자체크기
+  -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>윈도우사이즈</title>
+    <style>
+      .tag {
+        display: inline-block; /* 컨텐츠를 감싸준다 */
+        background-color: brown;
+        font-size: 48px;
+        padding: 16px; /* 상화좌우 */
+        margin-top: 16px;
+        margin-bottom: 40px;
+      }
+      div {
+        width: 200px;
+        height: 200px;
+        background-color: blueviolet;
+        border: 2px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="tag">윈도우사이즈</div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <script>
+      window.addEventListener("resize", () => {
+        //arrow function
+        //모니터의 화면크기(screen)
+        console.log(
+          "window.screen: ${window.screen.width},${window.screen.heigh},"
+        ); //자바에서는 람다식지원
+        //url과 탭(세션아이디를 쿠키에 저장함) 전체적인 브라우저 크기임
+        console.log(
+          "window.outer: ${window.screen.width},${window.screen.heigh},"
+        );
+        //웹페이지+스크롤바
+        console.log(
+          "window.inner: ${window.screen.width},${window.screen.heigh},"
+        );
+        console.log(
+          "document(문서만): ${document.documentElement.clientWidth},${document.documentElement.clientHeigh},"
+        );
+        //스크롤바가 제외된 문서만 사이즈
+      });
+    </script>
+    비교<img src="#" />
+  </body>
+</html>

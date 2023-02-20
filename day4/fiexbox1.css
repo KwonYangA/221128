@@ -1,0 +1,21 @@
+html,
+body {
+  height: 100%;
+}
+
+.container {
+  /* 보이는 높이의 100% 모두 쓰겠다는 의미 */
+  height: 100vh; /* 컨테이너의 부모의 100% 채움  */
+  background-color: bisque;
+  /* 왼쪽에서 오른쪽으로 정렬 */
+  display: flex; /* 플렉스 박스 로우,컬럼 방향/ 인라인에서 사용할수 없는 배치가 가능 */
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.item {
+  background-color: aquamarine;
+  width: 50px;
+  height: 50px;
+  border: 1px solid black;
+}

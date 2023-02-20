@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <title>Document</title>
+    <script>
+      const init = () => {
+        console.log("init호출");
+        console.log(document.querySelector("#f_test"));
+        //insert here - DOM Tree 구성 완료되면
+        //document.querySelector(#)
+        //document.querySelector(.)
+        //document.querySelector(이름)
+        //document.querySelectorAll(이름) ->배열로 자동 전환됨 브라우저가 함.
+        // 이 스크립트 부분이 바디안에 들어가면 순차적으로 실행이되고
+        // head안에 있을 때는 호이스팅 발생
+      }
+    </script>
+  </head>
+  <body onload ="init()">
+    <form id ="f_text" method="post" action="member_ok.php">
+      <fieldset style="width:500px; height:200px">
+        <legend>회원 가입 정보</legend>
+        <table>
+          <tr>
+            <td>아이디</td>
+            <td>
+              <input type="text" size="35" name="userid" id="userid"/>
+              <input type="button" size="35" name="userpw" id="userpw" value="중복확인" />
+              <!-- button - type : submit -> 화면전환
+                  input[button] - type : button
+                  <a> - type(X), href - 페이지 이동 or 함수 호출(페이지이동과 관련없다) - 화면전환이 안일어남
+                  location.href = hashchange
+                  아이디 중복확인은 버튼이 눌릴 때 마다 이벤트가 적용 되어야 하므로
+                  반드시 addEventListener 처리
+                  onclick으로 하면 마지막 한번만 처리되니까... 주의해야한다
+              -->
+            </td>
+          </tr>
+            <td>비밀번호</td>
+            <td>
+              <input type="password" size="35" name="userpw" />
+            </td>
+          </tr>
+          <tr>
+            <td>비밀번호확인</td>
+            <td>
+              <input type="password" size="35" name="name" />
+            </td>
+          </tr>
+          <tr>
+            <td>지역</td>
+            <td>
+            <input type="radio" id="loc" class="loc" value ="서울"/>서울
+            <input type="radio" id="loc" class="loc" value ="부산"/>부산
+            <input type="radio" id="loc" class="loc" value ="대구"/>대구
+            <!-- radio에 name, id로는 배열로 받을 수 없다. class로 하면 배열로 받을 수 있다.
+                value를 넣으면 
+            -->
+            </td>
+          </tr>
+        </table>
+        <div align=center>
+        <input type="reset" id="btn" value="초기화" />
+        <input type="button" id="btnjoin" value="회원가입" />
+        </div>
+      </fieldset>
+    </form>
+    <script>
+      const userpw = document.querySelector("#userpw")
+      userpw.addEventListener('click', ()=>{
+        const regEx = /^[a-z][a-zA-Z0-9!@#]{5,11}$/; //$를 붙여야 12개 끝에 매치 됨
+        const user = document.querySelector("#userid")
+        let str = user.value // 사용자가 텍스트필드에 입력한 문자열을 읽어옴
+        let isFlag = false
+        if(str.length !== null && str.length > 0){
+          isFlag = regEx.test(str)
+        }
+        const color = isFlag?'green':'red'
+        if(isFlag){
+          user.style.backgroundColor = color
+        }else{
+          user.style.backgroundColor = color
+        }
+        console.log(color);
+        console.log(isFlag);        
+      })
+      const locs = document.querySelectorAll(".loc")
+      const btnjoin = document.querySelector("#btnjoin")
+      console.log(locs);
+      let user = "";
+      const locals = ["서울", "부산", "인천"]
+      for(let i=0; i<locs.length; i++){
+        locs[i].addEventListener('click', () =>{
+          locs[i].value = locals[i]
+          user = locs[i].value;
+          console.log("after==>" +user);
+        })  
+      }  
+      btnjoin.addEventListener('click', ()=>{
+        if(user === ""|| user.length ===0){
+            alert("지역을 선택하세요")
+            return // if문의 return은 해당 함수를 탈출
+        }  
+      })
+      
+    </script>
+  </body>
+</html>
